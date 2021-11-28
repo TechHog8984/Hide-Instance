@@ -6,7 +6,7 @@ Example:
 - ### local object = Parent:FindFirstChild(Name)<br>if object then<br>object:Destroy()<br>end
 
 ## Check \#2:
-### Parent.FindFirstChild
+### .FindFirstChild
 Example:
 - #### local findfirstchild = game.FindFirstChild <br>local object = findfirstchild(Parent, Name)<br>if object then<br>object:Destroy()<br>end
 
@@ -26,3 +26,8 @@ Example:
 ### Parent:GetChildren
 Example:
 - ##### local children = Parent:GetChildren()<br>for I, Child in pairs(children) do<br>if Child and Child.Name == 'not in whitelist' then<br>Child:Destroy()<br>end<br>end
+
+## Check \#6:
+### .GetChildren
+Example:
+- #### local getchildren = game.GetChildren <br>local children = getchildren(Parent)<br>for I, Child in pairs(children) do<br>if Child and Child.Name == 'not in whitelist' then<br>Child:Destroy()

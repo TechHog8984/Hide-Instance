@@ -15,9 +15,9 @@ Example:
 ## Check \#3:
 ### Parent.ChildAdded
 Example:
-- ##### Parent.ChildAdded:Connect(function(Child)<br>if Child.Name == 'not in whitelist' then<br>Child:Destroy() -- or kick the player<br>end<br>end)
+- ##### Parent.ChildAdded:Connect(function(Child)<br>if Child.Name == 'not in whitelist' then<br>Child:Destroy()<br>end<br>end)
 
 ## Check \#4:
 ### workspace.DescendantAdded
 Example:
-- ##### workspace.DescendantAdded:Connect(function(Child)<br>if Child.Name == 'not in whitelist' then<br>Child:Destroy() --or kic kthe player<br>end<br>end)
+- ##### workspace.DescendantAdded:Connect(function(Descendant)<br>if Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()r<br>end<br>end)

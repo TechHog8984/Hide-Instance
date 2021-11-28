@@ -6,5 +6,5 @@
 
 ## Check #2:
 ### .FindFirstChild
-  ### - local findfirstchild = game.FindFirstChild
-  ###   findfirstchild(Parent, Name)
+  - ### local findfirstchild = game.FindFirstChild
+    ###   findfirstchild(Parent, Name)

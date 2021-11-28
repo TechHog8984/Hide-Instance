@@ -31,4 +31,4 @@
 ```
 
 # Issues, Bugs, etc,.
-## If you experience any issues, bugs, etc,. then please make a [new issue](https://github.com/TechHog8984/Hide-Instance/issues/new).
+## If you experience any issues, bugs, etc,. or even if you want to make a suggestion, then please make a [new issue](https://github.com/TechHog8984/Hide-Instance/issues/new).

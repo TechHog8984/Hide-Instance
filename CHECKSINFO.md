@@ -6,7 +6,5 @@
 
 ## Check #2:
 ### .FindFirstChild
-  ### -  ```lua
-              local findfirstchild = game.FindFirstChild
-              findfirstchild(Parent, Name)
-         ```
+  ### - local findfirstchild = game.FindFirstChild
+  ###   findfirstchild(Parent, Name)

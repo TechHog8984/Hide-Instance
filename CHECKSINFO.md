@@ -2,7 +2,7 @@
 
 ### Check \#1:
 #### :FindFirstChild
-= #### Parent:FindFirstChild(Name)
+- #### Parent:FindFirstChild(Name)
 
 ### Check \#2:
 #### .FindFirstChild

@@ -14,6 +14,7 @@ Example:
 
 ## Check \#3:
 ### .ChildAdded
+Example:
 - ##### Parent.ChildAdded:Connect(function(Child)<br>if Child.Name == 'not in whitelist' then<br>Child:Destroy() -- or kick the player<br>end<br>end)
 
 ## Check \#4:

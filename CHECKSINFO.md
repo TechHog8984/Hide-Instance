@@ -35,7 +35,7 @@ Example:
 ## Check \#6:
 ### .GetChildren
 Example:
-- #### local getchildren = game.GetChildren <br>local children = getchildren(Parent)<br>for I, Child in pairs(children) do<br>if Child and Child.Name == 'not in whitelist' then<br>Child:Destroy()
+- #### local getchildren = game.GetChildren <br>local children = getchildren(Parent)<br>for I, Child in pairs(children) do<br>if Child and Child.Name == 'not in whitelist' then<br>Child:Destroy()<br>end
 
 ### Just like in Check \#2 and Check \#3, although Check \#5 and Check \#6 look similar, they are hooked differently, thus two different checks exist.
 
@@ -47,6 +47,6 @@ Exampe:
 ## Check \#8:
 ### .GetDescendants
 Example:
-- #### local getdescendants = game.GetDescendants <br>local descendants = getdescendants(Parent)<br>for I, Descendant in pairs(descendants) do<br>if Descendant and Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()
+- #### local getdescendants = game.GetDescendants <br>local descendants = getdescendants(Parent)<br>for I, Descendant in pairs(descendants) do<br>if Descendant and Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()<br>end
 
 ## Check \#9:

@@ -45,5 +45,8 @@ Exampe:
 - ##### local descendants = Parent:GetDescendants()<br>for I, Descendant in pairs(descendants) do<br>if Descendant and Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()<br>end<br>end
 
 ## Check \#8:
+### .GetDescendants
+Example:
+- #### local getdescendants = game.GetDescendants <br>local descendants = getdescendants(Parent)<br>for I, Descendant in pairs(descendants) do<br>if Descendant and Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()
 
 ## Check \#9:

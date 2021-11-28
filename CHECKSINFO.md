@@ -25,7 +25,7 @@ Example:
 ## Check \#5:
 ### game.DescendantAdded
 Example:
-- ##### game.DescendantAdded:Connect(function(Descendant)<br>if Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()r<br>end<br>end)
+- ##### game.DescendantAdded:Connect(function(Descendant)<br>if Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()<br>end<br>end)
 
 ## Check \#6:
 ### Parent:GetChildren

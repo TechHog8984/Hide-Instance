@@ -18,10 +18,10 @@
     --now you are free to do whatever with this object as you normally would
 ```
 
-### Quick note:
-### You can use the Hide function to hide an already existing object, however it will be vulnerable to ChildAdded or DescendantAdded attacks as it would be parented before being hidden which would still trigger the events before the script hooks them.
+#### Quick note:
+#### You can use the Hide function to hide an already existing object, however it will be vulnerable to ChildAdded or DescendantAdded attacks as it would be parented before being hidden which would still trigger the events before the script hooks them.
 
-### The Hide function can be used like so:
+#### The Hide function can be used like so:
 ```lua
     local HideObject = loadstring(game:HttpGet('https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua'))()
     

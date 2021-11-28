@@ -1,5 +1,5 @@
 # Hide-Instance
-## What is this Hide-Instance? Hide-Instance is a script I made which can hide an Instance (also referred to as an object) preventing the game from accessing said Instance. This is significantly better than using syn.protect_gui.
+## What is this Hide-Instance? Hide-Instance is a script I made which can hide an Instance (also referred to as an object) preventing the game from accessing said Instance. This is significantly better than using syn.protect_gui (failed 8 checks I made, while my script bypasses all of them (more info can be found [here](/MOREINFO.md)).
 
 [source](/script/HideObject.lua)<br>^[\(raw\)](https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua)
 

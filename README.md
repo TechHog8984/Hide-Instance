@@ -29,3 +29,6 @@
     
     HideObject.Hide(Object, Object.Parent --[[again, THERE MUST BE A PARENT!!!!]])
 ```
+
+# Issues, Bugs, etc,.
+## If you experience any issues, bugs, etc,. then please make a [new issue](https://github.com/TechHog8984/Hide-Instance/issues/new) regarding your issue.

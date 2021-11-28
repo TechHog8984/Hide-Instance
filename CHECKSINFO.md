@@ -31,3 +31,11 @@ Example:
 ### .GetChildren
 Example:
 - #### local getchildren = game.GetChildren <br>local children = getchildren(Parent)<br>for I, Child in pairs(children) do<br>if Child and Child.Name == 'not in whitelist' then<br>Child:Destroy()
+
+### Just like in Check \#1 and Check \#2, although Check \#5 and Check \#6 look similar, they are hooked differently, thus two different checks exist.
+
+## Check \#7:
+
+## Check \#8:
+
+## Check \#9:

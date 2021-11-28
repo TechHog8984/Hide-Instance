@@ -18,6 +18,11 @@ Example:
 - ##### Parent.ChildAdded:Connect(function(Child)<br>if Child.Name == 'not in whitelist' then<br>Child:Destroy()<br>end<br>end)
 
 ## Check \#4:
-### workspace.DescendantAdded
+### game.DescendantAdded
 Example:
-- ##### workspace.DescendantAdded:Connect(function(Descendant)<br>if Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()r<br>end<br>end)
+- ##### game.DescendantAdded:Connect(function(Descendant)<br>if Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()r<br>end<br>end)
+
+## Check \#5:
+### Parent:GetChildren
+Example:
+- ##### local children = Parent:GetChildren()<br>for I, Child in pairs(children) do<br>if Child and Child.Name == 'not in whitelist' then<br>Child:Destroy()<br>end<br>end

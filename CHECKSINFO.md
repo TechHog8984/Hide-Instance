@@ -20,4 +20,4 @@ Example:
 ## Check \#4:
 ### .DescendantAdded
 Example:
-- ### workspace.DescendantAdded:Connect(function(Child)<br>if Child.Name == 'not in whitelist' then<br>Child:Destroy() --or kic kthe player<br>end<br>end)
+- ##### workspace.DescendantAdded:Connect(function(Child)<br>if Child.Name == 'not in whitelist' then<br>Child:Destroy() --or kic kthe player<br>end<br>end)

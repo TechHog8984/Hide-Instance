@@ -19,7 +19,7 @@
 ```
 
 #### Quick note:
-#### You can use the Hide function to hide an already existing object, however it will be vulnerable to ChildAdded or DescendantAdded attacks as it would be parented before being hidden which would still trigger the events before the script hooks them.
+#### You can use the Hide function to hide an already existing object, however it will be vulnerable to ChildAdded or DescendantAdded events as it would be parented before being hidden which would still trigger the events before the script hooks them.
 
 #### The Hide function can be used like so:
 ```lua

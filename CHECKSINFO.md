@@ -12,4 +12,4 @@
 
 ### Check \#3:
 #### .ChildAdded
-- #### Parent.ChildAdded:Connect(function(Child)<br>if Child.Name == 'not in whitelist' then Child:Destroy() -- or kick the player end<br>end)
+- #### Parent.ChildAdded:Connect(function(Child)<br>if Child.Name == 'not in whitelist' then<br>Child:Destroy() -- or kick the player end<br>end)

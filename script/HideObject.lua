@@ -14,11 +14,12 @@ local function tablefindByIndex(Table, Index)
 end
 
 local Objects = {}
+local DoHookIndex = {}
 
 local function Hide(Object, Parent)
     local AllConnections = {}
 
-    --get the connections for child added and descendant added of the parent of the object (Parent)
+    --get the connections for child added and descendant added of the parent of the object
     local ChildAddedConnections                 = getconnections(Parent.ChildAdded)
     local ParentDescendantAddedConnections      = getconnections(Parent.DescendantAdded)
     local GameDescendantAddedConnections        = getconnections(game.DescendantAdded)
@@ -37,7 +38,7 @@ local function Hide(Object, Parent)
         table.insert(AllConnections, Connection)
     end
 
-    --once they are disabled, parent the object to the parent (Parent)
+    --once they are disabled, parent the object to the parent
     Object.Parent = Parent
 
     --once it is parented, we re enable the connections
@@ -99,21 +100,39 @@ local function Hide(Object, Parent)
 end
 
 local function Create(Info)
+    --this function expects a table, so if that table doesn't exist, error
     if Info and type(Info) == 'table' then
+        --this table needs ClassName and Parent, so if those don't exist, error
         if Info.ClassName then
-            local Object = Instance.new(Info.ClassName)
-            local Parent = Info.Parent
+            if Info.Parent then
+                --create the object using Instance.new
+                local Object = Instance.new(Info.ClassName)
+                --get the parent
+                local Parent = Info.Parent
+                --check whether or not the user wants to not hook the index metamethod
+                if Info['HookIndex'] then
+                    table.insert(DoHookIndex, Object)
+                    print(Object, table.find(DoHookIndex, Object))
+                end
 
-            Info.ClassName = nil
-            Info.Parent = nil
+                --set the not needed values of the Info table nil
+                Info.ClassName = nil
+                Info.Parent = nil
+                Info['HookIndex'] = nil
 
-            for I, V in next, Info do
-                Object[I] = V
+                --set the properties of the object to be the same as the Info table, thus why we set the not needed values to nil
+                for I, V in next, Info do
+                    Object[I] = V
+                end
+
+                --hide the object
+                Hide(Object, Parent)
+
+                --return the object
+                return Object
+            else
+                error('Failed to get Parent, try Create{ClassName = classnameHere, Parent = parent}.', 2)
             end
-
-            Hide(Object, Parent)
-
-            return Object
         else
             error('Failed to get ClassName, try Create{ClassName = classnameHere}.', 2)
         end
@@ -190,8 +209,8 @@ do --main hooks
         --get the child
         local Value = oldIndex(Index, Key)
         
-        --check if the child is the object and if it is, return the base error just incase the game will run a pcall and check the error
-        if tablefindByIndex(Objects, Value) then
+        --check if the child is in the list of objects and if the user wants to hook the index and return the base error just incase the game will check the error
+        if tablefindByIndex(Objects, Value) and tablefind(DoHookIndex, Value) then
             return error(tostring(Key) .. ' is not a valid member of ' .. Index.ClassName .. ' "' .. tostring(Index) .. '"', 0)
         end
         

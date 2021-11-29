@@ -5,11 +5,11 @@
 # Script:
 - [source](/script/HideObject.lua)<br>^[\(raw\)](https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua)
 
-
+<!--
 # !!Warning!! This script makes an object return nil when indexed!!!!
 ## What does this mean?<br>This means that if you are using this on a script's parent, then script.Parent will return nil even if the parent is a real object.
 ## How can I get around this?<br>You can get around this by using my [Gui To Lua plugin](https://github.com/TechHog8984/roblox-studio/tree/main/plugins/GuiToLuaV3) (NOT YET WORKING) if you are you working with a GUI.
-
+-->
 
 # Documentation:
 

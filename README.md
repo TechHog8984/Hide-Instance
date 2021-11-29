@@ -38,21 +38,6 @@
 ```
 
 ## HookIndex option<br>The HookIndex option is not required and will determine whether or not you want to hook the game's __index metamethod to ensure your Instance is more hidden.<br>This is an option and not required because there are many cases where this will break scripts.
-Example:
-```lua
-    local HideObject = loadstring(game:HttpGet('https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua'))()
-    
-    local Gui = HideObject.Create{HideIndex = true, ClassName = 'ScreenGui', Parent = workspace}
-    local Frame = HideObject.Create{HideIndex = true, ClassName = 'Frame', Parent = Gui}
-    local Script = HideObject.Create{HideIndex = true, ClassName = 'LocalScript', Parent = Frame}
-    
-    coroutine.wrap(function()
-        while wait(1) do
-            Script.Parent.Visible = not Script.Parent.Visible
-         end
-    end)()
-```
-## This can be an issue because this is typically how a Gui To Lua plugin (like [this one](https://github.com/TechHog8984/roblox-studio/tree/main/plugins/GuiToLuaV3) which I will be implementing support for Hide-Instance in the near future) would handle your script, by wrapping them in a coroutine with the "script" variable being the script.
 
 # Issues, Bugs, etc,.
 ## If you experience any issues, bugs, etc,. or even if you want to make a suggestion, then please make a [new issue](https://github.com/TechHog8984/Hide-Instance/issues/new).

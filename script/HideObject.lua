@@ -14,7 +14,6 @@ local function tablefindByIndex(Table, Index)
 end
 
 local Objects = {}
-local DoHookIndex = {}
 
 local function Hide(Object, Parent)
     local AllConnections = {}
@@ -51,13 +50,15 @@ local function Hide(Object, Parent)
     oldFindFirstChild = hookfunction(Parent.FindFirstChild, function(...)
         --get the child it's trying to find
         local Child = oldFindFirstChild(...)
-        
-        --check if the child is the object and if it is, return nil
-        if Child == Object then
-            return nil
+
+        --check if synapse is calling the function
+        if checkcaller() then 
+            return Child --if synapse is calling then return the child as we want to hide the object from the game, not synapse
+        elseif Child == Object then --if synapse isn't calling, then check if the child is the object
+            return nil --if the child is the object then return nil
         end
         
-        --return the child
+        --return the child if nothing before this gets returned
         return Child
     end)
     --hook the GetChildren function
@@ -69,12 +70,12 @@ local function Hide(Object, Parent)
         --find the object in the Children table and get it's index if it exists
         local Index, Value = tablefind(Children, Object)
 
-        --check if the index and value exist (object exists in table)
-        if Index and Value and Value == Object then
+        --check if a synapse isn't calling this function and check if the index and value exist (object exists in table)
+        if not checkcaller() and Index and Value and Value == Object then
             --remove object from the table
             table.remove(Children, Index)
         end
-        --remote the either modified (if the object was found) table or the original if the object wasn't found
+        --remote the either modified table or the original
         return Children
     end)
     --hook the GetDescendants function
@@ -86,13 +87,13 @@ local function Hide(Object, Parent)
         --find the object in the Descendants table and get it's index if it exists
         local Index, Value = tablefind(Descendants, Object)
 
-        --check if the index and value exist (object exists in table)
-        if Index and Value and Value == Object then
+        --check if a synapse isn't calling this function and check if the index and value exist (object exists in table)
+        if not checkcaller() and Index and Value and Value == Object then
             --remove object from the table
             table.remove(Descendants, Index)
         end
 
-        --remote the either modified (if the object was found) table or the original if the object wasn't found
+        --remote the either modified table or the original
         return Descendants
     end)
 
@@ -109,15 +110,10 @@ local function Create(Info)
                 local Object = Instance.new(Info.ClassName)
                 --get the parent
                 local Parent = Info.Parent
-                --check whether or not the user wants to not hook the index metamethod
-                if Info['HookIndex'] then
-                    table.insert(DoHookIndex, Object)
-                end
 
                 --set the not needed values of the Info table nil
                 Info.ClassName = nil
                 Info.Parent = nil
-                Info['HookIndex'] = nil
 
                 --set the properties of the object to be the same as the Info table, thus why we set the not needed values to nil
                 for I, V in next, Info do
@@ -147,56 +143,57 @@ do --main hooks
         --get the namecallmethod
         local method = getnamecallmethod()
         
-        --check if the method is FindFirstChild or if it is GetChildren or if it is GetDescendants
-        if method == 'FindFirstChild' then
-            --get the child it's trying to find
-            local Child = oldNameCall(...)
-            
-            --check if the child is the object and if it is, return nil
-            if tablefindByIndex(Objects, Child) then
-                return nil
-            end
-            
-            --return the child
-            return Child
-        elseif method == 'GetChildren' then
-            --get the original Children table
-            local Children = oldNameCall(...)
-
-            --loop through the hidden objects
-            for Object, Parent in next, Objects do
-                --find the object in the Children table and get it's index if it exists
-                local Index, Value = tablefind(Children, Object)
-
-                --check if the index and value exist (object exists in table)
-                if Index and Value and Value == Object then
-                    --remove object from the table
-                    table.remove(Children, Index)
+        --check if synapse is calling this and check if the method is either FindFirstChild, GetChildren or GetDescendants
+        if not checkcaller() then
+            if method == 'FindFirstChild' then
+                --get the child it's trying to find
+                local Child = oldNameCall(...)
+                
+                --check if the child is the object and if it is, return nil
+                if tablefindByIndex(Objects, Child) then
+                    return nil
                 end
-            end
-            --remote the either modified (if the object was found) table or the original if the object wasn't found
-            return Children
-        elseif method == 'GetDescendants' then
-            --get the original Descendants table
-            local Descendants = oldNameCall(...)
+                
+                --return the child
+                return Child
+            elseif method == 'GetChildren' then
+                --get the original Children table
+                local Children = oldNameCall(...)
 
-            --loop through the hidden objects
-            for Object, Parent in next, Objects do
-                --find the object in the Descendants table and get it's index if it exists
-                local Index, Value = tablefind(Descendants, Object)
+                --loop through the hidden objects
+                for Object, Parent in next, Objects do
+                    --find the object in the Children table and get it's index if it exists
+                    local Index, Value = tablefind(Children, Object)
 
-                --check if the index and value exist (object exists in table)
-                if Index and Value and Value == Object then
-                    --remove object from the table
-                    table.remove(Descendants, Index)
+                    --check if the index and value exist (object exists in table)
+                    if Index and Value and Value == Object then
+                        --remove object from the table
+                        table.remove(Children, Index)
+                    end
                 end
-            end
+                --remote the either modified (if the object was found) table or the original if the object wasn't found
+                return Children
+            elseif method == 'GetDescendants' then
+                --get the original Descendants table
+                local Descendants = oldNameCall(...)
 
-            --remote the either modified (if the object was found) table or the original if the object wasn't found
-            return Descendants
+                --loop through the hidden objects
+                for Object, Parent in next, Objects do
+                    --find the object in the Descendants table and get it's index if it exists
+                    local Index, Value = tablefind(Descendants, Object)
+
+                    --check if the index and value exist (object exists in table)
+                    if Index and Value and Value == Object then
+                        --remove object from the table
+                        table.remove(Descendants, Index)
+                    end
+                end
+
+                --remote the either modified (if the object was found) table or the original if the object wasn't found
+                return Descendants
+            end
         end
         
-        --return the child(ren) / descendants
         return oldNameCall(...)
     end))
 
@@ -209,11 +206,10 @@ do --main hooks
         local Value = oldIndex(Index, Key)
         
         --check if the child is in the list of objects and if the user wants to hook the index and return the base error just incase the game will check the error
-        if tablefindByIndex(Objects, Value) and tablefind(DoHookIndex, Value) then
+        if not checkcaller() and tablefindByIndex(Objects, Value) then
             return error(tostring(Key) .. ' is not a valid member of ' .. Index.ClassName .. ' "' .. tostring(Index) .. '"', 0)
         end
-        
-        --return the child
+
         return Value
     end))
 end

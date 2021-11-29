@@ -20,22 +20,22 @@ Example:
 ## Check \#4:
 ### Parent.ChildAdded
 Example:
-- ##### Parent.ChildAdded:Connect(function(Child)<br>if Child.Name == 'not in whitelist' then<br>Child:Destroy()<br>end<br>end)
+- ##### Parent.ChildAdded:Connect(function(Child)<br>if Child.Name == 'ThisShouldntBeHere' then<br>Child:Destroy()<br>end<br>end)
 
 ## Check \#5:
 ### game.DescendantAdded
 Example:
-- ##### game.DescendantAdded:Connect(function(Descendant)<br>if Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()<br>end<br>end)
+- ##### game.DescendantAdded:Connect(function(Descendant)<br>if Descendant.Name == 'ThisShouldntBeHere' then<br>Descendant:Destroy()<br>end<br>end)
 
 ## Check \#6:
 ### Parent:GetChildren
 Example:
-- ##### local children = Parent:GetChildren()<br>for I, Child in pairs(children) do<br>if Child and Child.Name == 'not in whitelist' then<br>Child:Destroy()<br>end<br>end
+- ##### local children = Parent:GetChildren()<br>for I, Child in pairs(children) do<br>if Child and Child.Name == 'ThisShouldntBeHere' then<br>Child:Destroy()<br>end<br>end
 
 ## Check \#7:
 ### .GetChildren
 Example:
-- #### local getchildren = game.GetChildren <br>local children = getchildren(Parent)<br>for I, Child in pairs(children) do<br>if Child and Child.Name == 'not in whitelist' then<br>Child:Destroy()<br>end<br>end
+- #### local getchildren = game.GetChildren <br>local children = getchildren(Parent)<br>for I, Child in pairs(children) do<br>if Child and Child.Name == 'ThisShouldntBeHere' then<br>Child:Destroy()<br>end<br>end
 
 ### Just like in Check \#2 and Check \#3, although Check \#6 and Check \#7 look similar, they are hooked differently, thus two different checks exist.
 ### Same thing for the next 2 checks.
@@ -43,9 +43,9 @@ Example:
 ## Check \#8:
 ### :GetDescendants
 Exampe:
-- ##### local descendants = Parent:GetDescendants()<br>for I, Descendant in pairs(descendants) do<br>if Descendant and Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()<br>end<br>end
+- ##### local descendants = Parent:GetDescendants()<br>for I, Descendant in pairs(descendants) do<br>if Descendant and Descendant.Name == 'ThisShouldntBeHere' then<br>Descendant:Destroy()<br>end<br>end
 
 ## Check \#9:
 ### .GetDescendants
 Example:
-- #### local getdescendants = game.GetDescendants <br>local descendants = getdescendants(Parent)<br>for I, Descendant in pairs(descendants) do<br>if Descendant and Descendant.Name == 'not in whitelist' then<br>Descendant:Destroy()<br>end<br>end
+- #### local getdescendants = game.GetDescendants <br>local descendants = getdescendants(Parent)<br>for I, Descendant in pairs(descendants) do<br>if Descendant and Descendant.Name == 'ThisShouldntBeHere' then<br>Descendant:Destroy()<br>end<br>end

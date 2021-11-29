@@ -37,17 +37,5 @@
     HideObject.Hide(Object, Object.Parent --[[again, THERE MUST BE A PARENT!!!!]])
 ```
 
-## HookIndex option<br>The HookIndex option is not required and will determine whether or not you want to hook the game's __index metamethod to ensure your Instance is more hidden.<br>This is an option and not required because there are many cases where this will break scripts.
-Example using HookIndex:
-```lua
-    local HideObject = loadstring(game:HttpGet('https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua'))()
-    
-    local Gui = HideObject.Create{HookIndex = true, ClassName = 'ScreenGui', Parent = game:GetService'CoreGui', Name = 'Cool Gui'}
-    local Frame = HideObject.Create{HookIndex = true, Classname = 'ScreenGui', Parent = Gui, Name = 'MainFrame'}
-    
-    print(Frame.Parent)     --nil
-    print(Gui.MainFrame)    --nil
-```
-
 # Issues, Bugs, etc,.
 ## If you experience any issues, bugs, etc,. or even if you want to make a suggestion, then please make a [new issue](https://github.com/TechHog8984/Hide-Instance/issues/new).

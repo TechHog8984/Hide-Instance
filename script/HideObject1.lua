@@ -112,7 +112,6 @@ local function Create(Info)
                 --check whether or not the user wants to not hook the index metamethod
                 if Info['HookIndex'] then
                     table.insert(DoHookIndex, Object)
-                    print(Object, table.find(DoHookIndex, Object))
                 end
 
                 --set the not needed values of the Info table nil

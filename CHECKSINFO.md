@@ -108,4 +108,4 @@ end
 ```
 
 # Extra
-## As I stated in the README, if you have any other questions regarding these, you can make a [new issue](/issues/new) or even look at the [source code](/script/HideObject.lua), as there are many notes documenting most of the code.
+## As I stated in the README, if you have any other questions regarding these, you can make a [new issue](../issues/new) or even look at the [source code](/script/HideObject.lua), as there are many notes documenting most of the code.

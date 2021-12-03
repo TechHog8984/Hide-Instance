@@ -1,4 +1,4 @@
-# This is information regarding the previous spoken about checks that syn.protect_gui fails, whilst this script bypasses.
+# This is information regarding the previous spoken about checks that, as of Synapse X V2, syn.protect_gui fails, whilst this script bypasses.
 
 ## Check \#1:
 ### Parent.ObjectName

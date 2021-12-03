@@ -19,12 +19,19 @@
 local HideObject = loadstring(game:HttpGet('https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua'))()
 ```
 
-## Then, you use the `Create` function to create your object as a substitute for Instance.new:
+## Then, you use the `Create` function with the following syntax:
+```lua
+HideObject.Create{<string>ClassName, <Instance>Parent, ...}
+```
+### Both `ClassName` and `Parent` are required fields, while `...` represents any other normal properties.<br>An example of adding properties would look like this:
+```lua
+HideObject.Create{ClassName, Parent, Name = 'Name', Position = Vector3.new(200, 20, 30), Transparency = .5}
+```
+## You use this function to create your object as a substitute for Instance.new, like so:
 ```lua
 local HideObject = loadstring(game:HttpGet('https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua'))()
     
-local Object = HideObject.Create{ClassName = 'ScreenGui', Parent = workspace--[[THERE MUST BE A PARENT!!!!]], OtherNormalProperties = 'Go Here'}
---now you are free to do whatever with this object as you normally would
+local Object = HideObject.Create{'ScreenGui', workspace, OtherNormalProperties = 'Go Here'}
 ```
 
 #### Quick note:

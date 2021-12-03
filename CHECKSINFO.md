@@ -3,7 +3,7 @@
 ## Check \#1:
 ### Parent.ObjectName
 Example:
-- ### ```lua
+```lua
 local object = Parent.ThisShouldntBeHere<br>if object then<br>object:Destroy()<br>end
 ```
 ## Check \#2:

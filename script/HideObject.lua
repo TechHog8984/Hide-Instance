@@ -18,29 +18,47 @@ local Objects = {}
 local function Hide(Object, Parent)
     local AllConnections = {}
 
-    --get the connections for child added and descendant added of the parent of the object
+    --get connections that can detect the object being added
     local ChildAddedConnections                 = getconnections(Parent.ChildAdded)
     local ParentDescendantAddedConnections      = getconnections(Parent.DescendantAdded)
     local GameDescendantAddedConnections        = getconnections(game.DescendantAdded)
 
-    --loop through and disable them
+    --loop through all the connections
     for I, Connection in next, ChildAddedConnections do
-        Connection:Disable()
-        table.insert(AllConnections, Connection)
+        --get the connection's function
+        local Function = Connection.Function
+        --check if the function exists and is the function is a synapse function
+        if Function and not is_synapse_function(Function) then
+            --if so, then disable the connection and add the the list of connections to be re-enabled once the object is parented.
+            Connection:Disable()
+            table.insert(AllConnections, Connection)
+        end
     end
     for I, Connection in next, ParentDescendantAddedConnections do
-        Connection:Disable()
-        table.insert(AllConnections, Connection)
+        --get the connection's function
+        local Function = Connection.Function
+        --check if the function exists and is the function is a synapse function
+        if Function and not is_synapse_function(Function) then
+            --if so, then disable the connection and add the the list of connections to be re-enabled once the object is parented.
+            Connection:Disable()
+            table.insert(AllConnections, Connection)
+        end
     end
-     for I, Connection in next, GameDescendantAddedConnections do
-        Connection:Disable()
-        table.insert(AllConnections, Connection)
+    for I, Connection in next, GameDescendantAddedConnections do
+        --get the connection's function
+        local Function = Connection.Function
+        --check if the function exists and is the function is a synapse function
+        if Function and not is_synapse_function(Function) then
+            --if so, then disable the connection and add the the list of connections to be re-enabled once the object is parented.
+            Connection:Disable()
+            table.insert(AllConnections, Connection)
+        end
     end
 
-    --once they are disabled, parent the object to the parent
+    --once non synapse connections are disabled, parent the object to the parent
     Object.Parent = Parent
 
-    --once it is parented, we re enable the connections
+    --once the object is parented, re enable the connections
     for I, Connection in next, AllConnections do
         Connection:Enable()
     end
@@ -53,7 +71,7 @@ local function Hide(Object, Parent)
 
         --check if synapse is calling the function
         if checkcaller() then 
-            return Child --if synapse is calling then return the child as we want to hide the object from the game, not synapse
+            return Child --if synapse is calling then return the child
         elseif Child == Object then --if synapse isn't calling, then check if the child is the object
             return nil --if the child is the object then return nil
         end
@@ -104,32 +122,32 @@ local function Create(Info)
     --this function expects a table, so if that table doesn't exist, error
     if Info and type(Info) == 'table' then
         --this table needs ClassName and Parent, so if those don't exist, error
-        if Info.ClassName then
-            if Info.Parent then
+        if Info[1] then
+            if Info[2] then
                 --create the object using Instance.new
-                local Object = Instance.new(Info.ClassName)
+                local Object = Instance.new(Info[1])
                 --get the parent
-                local Parent = Info.Parent
+                local Parent = Info[2]
 
                 --set the not needed values of the Info table nil
-                Info.ClassName = nil
-                Info.Parent = nil
+                Info[1] = nil
+                Info[2] = nil
 
                 --set the properties of the object to be the same as the Info table, thus why we set the not needed values to nil
                 for I, V in next, Info do
                     Object[I] = V
                 end
 
-                --hide the object
+                --run the Hide function to hide the object
                 Hide(Object, Parent)
 
                 --return the object
                 return Object
             else
-                error('Failed to get Parent, try Create{ClassName = classnameHere, Parent = parent}.', 2)
+                error('Failed to get Parent, try Create{ClassName, Parent}.', 2)
             end
         else
-            error('Failed to get ClassName, try Create{ClassName = classnameHere}.', 2)
+            error('Failed to get ClassName, try Create{ClassName, Parent}.', 2)
         end
     else
         error('Expected a table as the first parameter, try Create{...}.', 2)
@@ -214,4 +232,5 @@ do --main hooks
     end))
 end
 
+--return a table which functions as a class
 return {Create = Create, Hide = Hide}

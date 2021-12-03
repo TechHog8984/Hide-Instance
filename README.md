@@ -31,17 +31,23 @@ HideObject.Create{ClassName, Parent, Name = 'Name', Position = Vector3.new(200, 
 ```lua
 local HideObject = loadstring(game:HttpGet('https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua'))()
     
-local Object = HideObject.Create{'ScreenGui', workspace, OtherNormalProperties = 'Go Here'}
+local Object = HideObject.Create{'ScreenGui', workspace, Position = UDim2.new(1, 0, 1, 0}
+--now, you can edit the object like normal.
+Object.Size = UDim2.new(0, 200, 0, 300)
 ```
 
-#### Quick note:
-#### You can use the `Hide` function to hide an already existing object, however it will be vulnerable to ChildAdded or DescendantAdded events as it would be parented before being hidden which would still trigger the events before the script hooks them.
+### Also, you can use the `Hide` function to hide an already existing object, however it will be vulnerable to ChildAdded or DescendantAdded events as it would be parented before being hidden which would still trigger the events before the script hooks them.
 
-#### The `Hide` function can be used like so:
+### The `Hide` function can be used with the following syntax:
+```lua
+HideObject.Hide(<Instance>Object, <Instance>Parent)
+```
+### `Parent` is REQUIRED and the script will NOT work if you do not provide a parent.
+### Example of the hide function:
 ```lua
 local HideObject = loadstring(game:HttpGet('https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua'))()
     
-HideObject.Hide(Object, Object.Parent --[[again, THERE MUST BE A PARENT!!!!]])
+HideObject.Hide(workspace, game) --trol
 ```
 
 # Issues, Bugs, etc,.

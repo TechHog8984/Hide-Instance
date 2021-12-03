@@ -3,8 +3,9 @@
 ## Check \#1:
 ### Parent.ObjectName
 Example:
-- ### local object = Parent.ThisShouldntBeHere<br>if object then<br>object:Destroy()<br>end
-
+- ### ```lua
+local object = Parent.ThisShouldntBeHere<br>if object then<br>object:Destroy()<br>end
+```
 ## Check \#2:
 ### Parent:FindFirstChild
 Example:

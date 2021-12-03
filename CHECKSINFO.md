@@ -40,6 +40,16 @@ Parent.ChildAdded:Connect(function(Child)
 end)
 ```
 ## Check \#5:
+### Parent.DescendantAdded
+Example:
+```lua
+Parent.DescendantAdded:Connect(function(Descendant)
+    if Descendant.Name == 'ThisShouldntBeHere' then
+        Descendant:Destroy()
+    end
+end)
+```
+## Check \#6:
 ### game.DescendantAdded
 Example:
 ```lua
@@ -49,7 +59,7 @@ game.DescendantAdded:Connect(function(Descendant)
     end
 end)
 ```
-## Check \#6:
+## Check \#7:
 ### Parent:GetChildren
 Example:
 ```lua
@@ -60,7 +70,7 @@ for I, Child in pairs(children) do
     end
 end
 ```
-## Check \#7:
+## Check \#8:
 ### .GetChildren
 Example:
 ```lua
@@ -71,10 +81,10 @@ for I, Child in pairs(children) do
     end
 end
 ```
-### Just like in Check \#2 and Check \#3, although Check \#6 and Check \#7 look similar, they are hooked differently, thus two different checks exist.
+### Just like in Check \#2 and Check \#3, although Check \#7 and Check \#8 look similar, they are hooked differently, thus two different checks exist.
 ### Same thing for the next 2 checks.
 
-## Check \#8:
+## Check \#9:
 ### :GetDescendants
 Exampe:
 ```lua
@@ -85,7 +95,7 @@ for I, Descendant in pairs(descendants) do
     end
 end
 ```
-## Check \#9:
+## Check \#10:
 ### .GetDescendants
 Example:
 ```lua

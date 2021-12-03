@@ -38,4 +38,4 @@ HideObject.Hide(Object, Object.Parent --[[again, THERE MUST BE A PARENT!!!!]])
 ```
 
 # Issues, Bugs, etc,.
-## If you experience any issues, bugs, etc,. or even if you want to make a suggestion, then please make a [new issue](https://github.com/TechHog8984/Hide-Instance/issues/new).<br>If you have any other questions regarding the actual code itself, you can look at the [source code], as there are many notes documenting most of the code.
+## If you experience any issues, bugs, etc,. or even if you want to make a suggestion, then please make a [new issue](https://github.com/TechHog8984/Hide-Instance/issues/new).<br>If you have any other questions regarding the actual code itself, you can look at the [source code](/script/HideInstance.lua), as there are many notes documenting most of the code.

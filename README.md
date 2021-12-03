@@ -14,12 +14,12 @@
 # Documentation:
 
 
-## First, you have to get the actual "class":
+## First, you have to get the actual class:
 ```lua
 local HideObject = loadstring(game:HttpGet('https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua'))()
 ```
 
-## Then, you use the Create function to create your object as a substitute for Instance.new:
+## Then, you use the `Create` function to create your object as a substitute for Instance.new:
 ```lua
 local HideObject = loadstring(game:HttpGet('https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua'))()
     
@@ -28,9 +28,9 @@ local Object = HideObject.Create{ClassName = 'ScreenGui', Parent = workspace--[[
 ```
 
 #### Quick note:
-#### You can use the Hide function to hide an already existing object, however it will be vulnerable to ChildAdded or DescendantAdded events as it would be parented before being hidden which would still trigger the events before the script hooks them.
+#### You can use the `Hide` function to hide an already existing object, however it will be vulnerable to ChildAdded or DescendantAdded events as it would be parented before being hidden which would still trigger the events before the script hooks them.
 
-#### The Hide function can be used like so:
+#### The `Hide` function can be used like so:
 ```lua
 local HideObject = loadstring(game:HttpGet('https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua'))()
     

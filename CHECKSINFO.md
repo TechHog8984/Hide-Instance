@@ -21,9 +21,8 @@ end
 ## Check \#3:
 ### .FindFirstChild
 Example:
-```lua
-local findfirstchild = game.FindFirstChild 
-local object = findfirstchild(Parent, 'ThisShouldntBeHere')
+```lua 
+local object = Parent.FindFirstChild(Parent, 'ThisShouldntBeHere')
 if object then
   object:Destroy()
 end
@@ -65,8 +64,7 @@ end
 ### .GetChildren
 Example:
 ```lua
-local getchildren = game.GetChildren 
-local children = getchildren(Parent)
+local children = Parent.GetChildren(Parent)
 for I, Child in pairs(children) do
     if Child and Child.Name == 'ThisShouldntBeHere' then
         Child:Destroy()
@@ -91,8 +89,7 @@ end
 ### .GetDescendants
 Example:
 ```lua
-local getdescendants = game.GetDescendants 
-local descendants = getdescendants(Parent)
+local descendants = Parent.GetDescendants(Parent)
 for I, Descendant in pairs(descendants) do
     if Descendant and Descendant.Name == 'ThisShouldntBeHere' then
         Descendant:Destroy()

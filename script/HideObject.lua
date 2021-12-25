@@ -124,10 +124,11 @@ local function Create(Info)
         --this table needs ClassName and Parent, so if those don't exist, error
         if Info[1] or Info.ClassName then
             if Info[2] or Info.Parent then
+                --get the parent and the classname
+                local Parent = Info[2] or Info.Parent
+                local ClassName = Info[1] or Info.ClassName
                 --create the object using Instance.new
-                local Object = Instance.new(Info[1] or Info.ClassName)
-                --get the parent
-                local Parent = Info[2] or Info.ClassName
+                local Object = Instance.new(ClassName)
 
                 --set the not needed values of the Info table nil
                 Info[1] = nil

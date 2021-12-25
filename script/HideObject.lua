@@ -122,16 +122,18 @@ local function Create(Info)
     --this function expects a table, so if that table doesn't exist, error
     if Info and type(Info) == 'table' then
         --this table needs ClassName and Parent, so if those don't exist, error
-        if Info[1] then
-            if Info[2] then
+        if Info[1] or Info.ClassName then
+            if Info[2] or Info.Parent then
                 --create the object using Instance.new
-                local Object = Instance.new(Info[1])
+                local Object = Instance.new(Info[1] or Info.ClassName)
                 --get the parent
-                local Parent = Info[2]
+                local Parent = Info[2] or Info.ClassName
 
                 --set the not needed values of the Info table nil
                 Info[1] = nil
                 Info[2] = nil
+                Info.Parent = nil
+                Info.ClassName = nil
 
                 --set the properties of the object to be the same as the Info table, thus why we set the not needed values to nil
                 for I, V in next, Info do

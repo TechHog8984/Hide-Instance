@@ -25,13 +25,13 @@ HideObject.Create{<string>ClassName, <Instance>Parent, ...}
 ```
 ### Both `ClassName` and `Parent` are required fields, while `...` represents any other normal properties.<br>An example of adding properties would look like this:
 ```lua
-HideObject.Create{ClassName, Parent, Name = 'Name', Position = Vector3.new(200, 20, 30), Transparency = .5}
+HideObject.Create{ClassName, Parent, Name = 'Name', Position = UDim2.new(0, 200, 0, 300), BackgroundTransparency = .5}
 ```
 ## You use this function to create your object as a substitute for Instance.new, like so:
 ```lua
 local HideObject = loadstring(game:HttpGet('https://raw.githubusercontent.com/TechHog8984/Hide-Instance/main/script/HideObject.lua'))()
     
-local Object = HideObject.Create{'ScreenGui', workspace, Position = UDim2.new(1, 0, 1, 0}
+local Object = HideObject.Create{'Frame', workspace, Position = UDim2.new(1, 0, 1, 0}
 --now, you can edit the object like normal.
 Object.Size = UDim2.new(0, 200, 0, 300)
 ```

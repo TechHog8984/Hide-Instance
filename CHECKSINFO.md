@@ -1,4 +1,4 @@
-# This is information regarding the previous spoken about checks that this script bypasses.
+# This is information regarding the checks that this script bypasses.
 
 ## Check \#1:
 ### Parent.ObjectName
